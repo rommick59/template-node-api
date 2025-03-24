@@ -61,7 +61,7 @@ export const login = async (req: Request, res: Response) => {
 
     if (!user) {
       res.status(401).json({
-        error: 'Email incorrect',
+        error: 'Email not found',
       })
       return
     }
@@ -69,7 +69,7 @@ export const login = async (req: Request, res: Response) => {
     const isPasswordValid = await bcrypt.compare(password, user.password)
     if (!isPasswordValid) {
       res.status(401).json({
-        error: 'Mot de passe incorrect',
+        error: 'Invalid password',
       })
       return
     }
@@ -91,10 +91,11 @@ export const login = async (req: Request, res: Response) => {
         id: user.id,
         email: user.email,
       },
+      message: 'Login successful',
     })
   } catch {
     res.status(500).json({
-      error: 'Une erreur est survenue',
+      error: 'Failed to login',
     })
   }
 }
