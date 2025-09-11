@@ -1,3 +1,3 @@
 # template_api_node
 
-Test sur la main
+Ceci est mon template pour mes projets futur en node.js (avec utilisation d'une API)
